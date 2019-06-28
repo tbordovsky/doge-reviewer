@@ -56,11 +56,13 @@ def handle_review_submit():
     event = request.headers['X-GitHub-Event']
     app.logger.debug(event)
     payload = request.get_json()
+    github_username = payload['review']['user']['login']
     if event == 'pull_request_review' and payload['action'] == 'submitted':
         response = client.files_upload(
             channels='#general',
+            link_names=1,
             file=doge_path + get_doge(),
-            initial_comment='Thanks for the review!')
+            initial_comment=f'Hi <@{github_username}>, thanks for the review!')
         assert response["ok"]
     return 'Hello, event!'
 
