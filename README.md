@@ -12,7 +12,13 @@ Make sure to set up a virtualenv with python3.6 or greater, it's necessary for t
 
 To install dependencies, run `pip install requirements.txt` inside of your virtualenv.
 
-To run the app, first add these vars to your virtualenv hooks like so `echo 'export FLASK_APP=app.py\nexport FLASK_ENV=development' >> $VIRTUAL_ENV/bin/postactivate` and `echo 'unset FLASK_APP\nunset FLASK_ENV' >> VIRTUAL_ENV/bin/predeactivate'`
+To run the app, first add these vars to your virtualenv hooks like so 
+```shell
+echo 'export FLASK_APP=app.py' >> $VIRTUAL_ENV/bin/postactivate && \
+echo 'export FLASK_ENV=development' >> $VIRTUAL_ENV/bin/postactivate && \
+echo 'unset FLASK_APP' >> $VIRTUAL_ENV/bin/predeactivate && \
+echo 'unset FLASK_ENV' >> $VIRTUAL_ENV/bin/predeactivate
+```
 
 ## Set environment variables
 
